@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    int Xi, Yi, Tally = 0, TotalChanges, T1, T2;
+    int Xi = 0, Yi = 0, Tally = 0, TotalChanges = 0, T1 = 0, T2 = 0;
     vector<tuple<int, int>> Elevations;
 
     cin >> TotalChanges;
@@ -20,19 +20,15 @@ int main()
     }
 
     cin >> Xi >> Yi;
-    cout << "Elevation is: " << Yi << endl;
 
-    for(int i = 0; i < (Elevations.size() - 1); i++)//Cover edge case of if last mound has been passed
+    for(int i = 2; i < (Elevations.size() - 1); i += 2)//Cover edge case of if last mound has been passed
     {
-        if(i % 2 == 0) continue;
-
-
-
         if(get<1>(Elevations[i]) <= Yi) 
         {
             Tally++;
         }
-        if(get<1>(Elevations[i]) > Yi) {cout << "pollo" << endl; break;}
+        
+        if(get<1>(Elevations[i]) > Yi)  break;
     } 
 
     cout << Tally << endl;
